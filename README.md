@@ -64,6 +64,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [62. 不同路径](https://leetcode-cn.com/problems/unique-paths/)
 
+#### [64. 最小路径和](https://leetcode-cn.com/problems/minimum-path-sum/)
+
 *****
 
 ## 分治算法
