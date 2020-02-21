@@ -40,6 +40,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/)
 
+#### [78. 子集](https://leetcode-cn.com/problems/subsets/)
+
 *****
 
 ## 位运算
