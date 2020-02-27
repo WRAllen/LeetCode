@@ -1,6 +1,6 @@
 # 这是我力扣(LeetCode)的解题思路记录
 
-**欢迎大家浏览**
+**欢迎大家浏览**，这里的解题思路是我看到题目后真实的想法，包括了对问题的解析和尝试，当然包含了错误的解析和错误的尝试（滑稽）
 
 *****
 
@@ -41,6 +41,8 @@ PS:树和链表这种结构天生就适用于递归
 #### [52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/)
 
 #### [78. 子集](https://leetcode-cn.com/problems/subsets/)
+
+#### [79. 单词搜索](https://leetcode-cn.com/problems/word-search/)
 
 *****
 
@@ -96,3 +98,6 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [76. 最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)
 
+## 栈
+
+#### [84. 柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
