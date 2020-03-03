@@ -16,6 +16,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [83. 删除排序链表中的重复元素](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
 
+#### [94. 二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
+
 #### [101. 对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/)
 
 #### [104. 二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/)
