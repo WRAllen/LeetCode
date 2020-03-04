@@ -74,6 +74,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [72. 编辑距离](https://leetcode-cn.com/problems/edit-distance/)
 
+#### [96. 不同的二叉搜索树](https://leetcode-cn.com/problems/unique-binary-search-trees/)
+
 *****
 
 ## 分治算法
