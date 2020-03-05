@@ -18,6 +18,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [94. 二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
 
+#### [98. 验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree/)
+
 #### [101. 对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/)
 
 #### [104. 二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/)
