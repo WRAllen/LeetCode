@@ -113,10 +113,10 @@ PS:树和链表这种结构天生就适用于递归
 
 ## 树
 
-### 宽度优先（层次遍历）
+### 宽度优先（层次遍历）-BFS
 
 #### [102. 二叉树的层次遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)
 
-### 深度优先
+### 深度优先-DFS
 
 #### [94. 二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
