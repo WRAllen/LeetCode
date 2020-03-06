@@ -4,7 +4,7 @@
 
 *****
 
-下面是分类
+下面是分类（有一些题目在多个类别下）
 
 ## 递归解题
 
@@ -95,7 +95,6 @@ PS:树和链表这种结构天生就适用于递归
 
 ## 排序算法
 
-#### 
 *****
 
 ## 双指针
@@ -104,6 +103,20 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [76. 最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)
 
+*****
+
 ## 栈
 
 #### [84. 柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
+
+*****
+
+## 树
+
+### 宽度优先（层次遍历）
+
+#### [102. 二叉树的层次遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)
+
+### 深度优先
+
+#### [94. 二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
