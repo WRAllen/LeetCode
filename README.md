@@ -22,8 +22,6 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [101. 对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/)
 
-#### [104. 二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/)
-
 #### [111. 二叉树的最小深度](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/)
 
 #### [206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
@@ -113,10 +111,14 @@ PS:树和链表这种结构天生就适用于递归
 
 ## 树
 
-### 宽度优先（层次遍历）-BFS
+### 宽度优先-BFS
 
 #### [102. 二叉树的层次遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)
 
 ### 深度优先-DFS
 
 #### [94. 二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
+
+#### [104. 二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/)
+
+#### [105. 从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
