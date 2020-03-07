@@ -24,6 +24,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [111. 二叉树的最小深度](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/)
 
+#### [114. 二叉树展开为链表](https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/)
+
 #### [206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
 
 #### [226. 翻转二叉树](https://leetcode-cn.com/problems/invert-binary-tree/)
