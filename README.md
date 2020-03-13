@@ -54,6 +54,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [29. 两数相除](https://leetcode-cn.com/problems/divide-two-integers/)
 
+#### [136. 只出现一次的数字](https://leetcode-cn.com/problems/single-number/)
+
 *****
 
 ## 字典解题算法
