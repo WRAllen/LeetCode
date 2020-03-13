@@ -56,9 +56,15 @@ PS:树和链表这种结构天生就适用于递归
 
 *****
 
-## 字典序算法
+## 字典解题算法
 
 #### [31. 下一个排列](https://leetcode-cn.com/problems/next-permutation/)
+
+*****
+
+##  集合解题
+
+#### [128. 最长连续序列](https://leetcode-cn.com/problems/longest-consecutive-sequence/)
 
 *****
 
