@@ -107,6 +107,10 @@ PS:树和链表这种结构天生就适用于递归
 
 ## 排序算法
 
+### 归并排序
+
+#### [148. 排序链表](https://leetcode-cn.com/problems/sort-list/)
+
 *****
 
 ## 双指针
@@ -142,3 +146,7 @@ PS:树和链表这种结构天生就适用于递归
 #### [105. 从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
 
 #### [124. 二叉树中的最大路径和](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/)
+
+## 有序字典OrderedDict
+
+#### [146. LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/)
