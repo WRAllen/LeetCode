@@ -90,6 +90,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [139. 单词拆分](https://leetcode-cn.com/problems/word-break/)
 
+#### [152. 乘积最大子序列](https://leetcode-cn.com/problems/maximum-product-subarray/)
+
 *****
 
 ## 分治算法
