@@ -100,6 +100,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [53. 最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)
 
+#### [169. 多数元素](https://leetcode-cn.com/problems/majority-element/)
+
 *****
 
 ## 贪心算法
