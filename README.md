@@ -34,6 +34,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [654. 最大二叉树](https://leetcode-cn.com/problems/maximum-binary-tree/)
 
+#### [200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
+
 *****
 
 ## 回溯解题
