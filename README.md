@@ -159,6 +159,14 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [124. 二叉树中的最大路径和](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/)
 
+## 图
+
+### 有向图
+
+#### [207. 课程表](https://leetcode-cn.com/problems/course-schedule/)
+
+#### [210. 课程表 II](https://leetcode-cn.com/problems/course-schedule-ii/)
+
 ## 有序字典OrderedDict
 
 #### [146. LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/)
