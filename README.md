@@ -159,6 +159,10 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [124. 二叉树中的最大路径和](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/)
 
+### 前缀树
+
+#### [208. 实现 Trie (前缀树)](https://leetcode-cn.com/problems/implement-trie-prefix-tree/)
+
 ## 图
 
 ### 有向图
