@@ -121,6 +121,12 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [148. 排序链表](https://leetcode-cn.com/problems/sort-list/)
 
+#### [215. 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
+
+### 快速排序
+
+#### [215. 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
+
 *****
 
 ## 双指针
@@ -173,4 +179,4 @@ PS:树和链表这种结构天生就适用于递归
 
 ## 有序字典OrderedDict
 
-#### [146. LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/)
+#### [146. LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/) 
