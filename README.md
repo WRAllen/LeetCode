@@ -36,6 +36,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
 
+#### [235. 二叉搜索树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
+
 *****
 
 ## 回溯解题
@@ -170,6 +172,10 @@ PS:树和链表这种结构天生就适用于递归
 ### 前缀树
 
 #### [208. 实现 Trie (前缀树)](https://leetcode-cn.com/problems/implement-trie-prefix-tree/)
+
+## 链表
+
+#### [234. 回文链表](https://leetcode-cn.com/problems/palindrome-linked-list/)
 
 ## 图
 
