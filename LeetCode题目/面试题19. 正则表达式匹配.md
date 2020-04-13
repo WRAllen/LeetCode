@@ -1,0 +1,106 @@
+# 题目[面试题19. 正则表达式匹配](https://leetcode-cn.com/problems/zheng-ze-biao-da-shi-pi-pei-lcof/)
+
+请实现一个函数用来匹配包含'. '和'*'的正则表达式。模式中的字符'.'表示任意一个字符，而'*'表示它前面的字符可以出现任意次（含0次）。在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但与"aa.a"和"ab*a"均不匹配。
+
+示例 1:
+
+```
+输入:
+s = "aa"
+p = "a"
+输出: false
+解释: "a" 无法匹配 "aa" 整个字符串。
+```
+
+
+
+示例 2:
+
+```
+输入:
+s = "aa"
+p = "a*"
+输出: true
+解释: 因为 '*' 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 'a'。因此，字符串 "aa" 可被视为 'a' 重复了一次。
+```
+
+
+
+示例 3:
+
+```
+输入:
+s = "ab"
+p = ".*"
+输出: true
+解释: ".*" 表示可匹配零个或多个（'*'）任意字符（'.'）。
+```
+
+
+
+示例 4:
+
+```
+输入:
+s = "aab"
+p = "c*a*b"
+输出: true
+解释: 因为 '*' 表示零个或多个，这里 'c' 为 0 个, 'a' 被重复一次。因此可以匹配字符串 "aab"。
+```
+
+
+
+示例 5:
+
+```
+输入:
+s = "mississippi"
+p = "mis*is*p*."
+输出: false
+```
+
+
+
+    s 可能为空，且只包含从 a-z 的小写字母。
+    p 可能为空，且只包含从 a-z 的小写字母，以及字符 . 和 *。
+
+*****
+
+# Python解题思路
+
+回去看了一下自己之前做的[解答](https://leetcode-cn.com/problems/regular-expression-matching/solution/zheng-ze-biao-da-shi-pi-pei-pythondui-guan-fang-ti/)才又找回了灵感
+
+## 方法1：递归算法
+
+核心思路：遇到 x* 的情况其实只有2种
+
+> 当连x都匹配不上时自然就是整个`X*`抛弃掉
+>
+> 当x匹配上时，要么抵消掉一个s `X*`保留， 要么整个`X*`抛弃掉
+
+```python
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        if not p: return not s
+        first_match = bool(s) and p[0] in (".", s[0])
+        if len(p) >= 2 and p[1] == "*":
+            if first_match:
+                return self.isMatch(s[1:], p) or self.isMatch(s, p[2:])
+            return self.isMatch(s, p[2:])   
+        return first_match and self.isMatch(s[1:], p[1:])
+```
+
+```
+执行用时 :1496 ms, 在所有 Python3 提交中击败了24.17% 的用户
+内存消耗 :13.4 MB, 在所有 Python3 提交中击败了100.00%的用户
+
+执行用时 :1588 ms, 在所有 Python3 提交中击败了20.45% 的用户
+内存消耗 :13.7 MB, 在所有 Python3 提交中击败了100.00%的用户
+
+执行用时 :2320 ms, 在所有 Python3 提交中击败了5.02% 的用户
+内存消耗 :13.6 MB, 在所有 Python3 提交中击败了100.00%的用户
+```
+
+欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
+
+  

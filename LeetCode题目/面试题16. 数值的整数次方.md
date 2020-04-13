@@ -1,0 +1,133 @@
+# 题目[面试题16. 数值的整数次方](https://leetcode-cn.com/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/)
+
+实现函数double Power(double base, int exponent)，求base的exponent次方。不得使用库函数，同时不需要考虑大数问题。
+
+示例 1:
+
+```
+输入: 2.00000, 10
+输出: 1024.00000
+```
+
+
+
+示例 2:
+
+```
+输入: 2.10000, 3
+输出: 9.26100
+```
+
+
+
+示例 3:
+
+```
+输入: 2.00000, -2
+输出: 0.25000
+解释: 2-2 = 1/22 = 1/4 = 0.25 
+```
+
+说明:
+
+    -100.0 < x < 100.0
+    n 是 32 位有符号整数，其数值范围是 [−2^31, 2^31 − 1] 。
+
+*****
+
+# Python解题思路
+
+## 方法1：累乘---超时
+
+感觉分一下情况应该就可以出来了
+
+```python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        result = 1
+        if n > 0:
+            while n:
+                result *= x
+                n -= 1
+        else:
+            n = -n
+            while n:
+                result *= 1/x
+                n -= 1
+        return result
+```
+
+运行结果
+
+```
+291 / 304 个通过测试用例
+	状态：超出时间限制
+	
+提交时间：0 分钟之前
+最后执行的输入： 0.00001
+2147483647
+```
+
+卧槽超时了！！！
+
+想了半天没有思路，求助一下
+
+## 方法2：快速幂
+
+这里要注意一下快速幂的原理 
+
+例如你求x的n次方（假如n为偶数），可以转化成求 x*x的 n//2的次方，这样一下子就少了一半的计算
+
+```
+例如求： 5^7
+
+正常的逻辑
+result = 5 * 5 * 5 * 5 * 5 * 5 * 5
+
+快速幂
+因为是奇数
+result = 5^6 * 5
+那递归到下一层的时候求5^6
+result = 5^3 * 5^3
+```
+
+代码如下
+
+```python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        result = 1
+        def quick(n):
+            nonlocal result, x
+            if n < 0:
+                n, x = -n, 1/x
+            if n == 0: return 1
+            # 奇数 & 1 = 1 偶数 & 1 = 0，这很简单比%来判断奇偶要快
+            if n & 1:
+                return x * quick(n-1)
+            tem = quick(n//2)
+            # 这里不要傻傻的写成return quick(n//2)*quick(n//2)!!!不能通过的，因为我试了（狗头）
+            # 整了半天好不容易把复杂度降低了，又来个quick(n//2)*quick(n//2)又给搞回去(ˉ▽ˉ；)...
+            # 我真是个大傻逼
+            return tem * tem
+        return quick(n)
+```
+
+运行结果
+
+```
+执行用时 :48 ms, 在所有 Python3 提交中击败了31.65% 的用户
+内存消耗 :13.7 MB, 在所有 Python3 提交中击败了100.00%的用户
+
+执行用时 :36 ms, 在所有 Python3 提交中击败了81.78% 的用户
+内存消耗 :13.8 MB, 在所有 Python3 提交中击败了100.00%的用户
+
+执行用时 :60 ms, 在所有 Python3 提交中击败了12.86% 的用户
+内存消耗 :13.5 MB, 在所有 Python3 提交中击败了100.00%的用户
+```
+
+感觉之前好像有在学校看过这个算法，可惜记忆模糊了...
+
+欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
+
+  
