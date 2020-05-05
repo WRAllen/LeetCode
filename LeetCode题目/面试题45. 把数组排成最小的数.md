@@ -1,0 +1,204 @@
+# 题目[面试题45. 把数组排成最小的数](https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/)
+
+输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
+
+ 
+
+示例 1:
+
+```
+输入: [10,2]
+输出: "102"
+```
+
+
+
+示例 2:
+
+```
+输入: [3,30,34,5,9]
+输出: "3033459"
+```
+
+
+
+*****
+
+# Python解题思路
+
+这就是个排序的题目，要使得排序后的数值是最小的。那核心就在如何比较了！
+
+可是我毫无思路，于是参考了几位大神的思路有了核心算法
+
+```
+就拿3和30做比较
+3+30=》330   30+3=》303
+所以30比3要小（对于这道题）
+那问题就简化成对列表用上述的方法进行排序
+```
+
+那文件就简单多了，利用冒泡，插入，选择排序，或者是快速排序，递归排序，只是把大小的判断用其他函数来替代即可
+
+## 方法1：冒泡排序
+
+```python
+class Solution:
+    def minNumber(self, nums: List[int]) -> str:
+        if not nums: return ""
+        len_max = len(nums)
+        while len_max:
+            for each in range(len_max-1):
+                if self.compare(str(nums[each]), str(nums[each+1])):
+                    nums[each], nums[each+1] = nums[each+1], nums[each]
+            len_max -= 1
+        return "".join([str(each) for each in nums])
+    
+    def compare(self, str_1, str_2):        
+        return True if int(str_1 + str_2) > int(str_2 + str_1) else False
+```
+
+运行结果
+
+```
+执行用时 :140 ms, 在所有 Python3 提交中击败了5.78% 的用户
+内存消耗 :13.7 MB, 在所有 Python3 提交中击败了100.00%的用户
+
+执行用时 :120 ms, 在所有 Python3 提交中击败了8.77% 的用户
+内存消耗 :13.7 MB, 在所有 Python3 提交中击败了100.00%的用户
+
+执行用时 :156 ms, 在所有 Python3 提交中击败了5.08% 的用户
+内存消耗 :13.7 MB, 在所有 Python3 提交中击败了100.00%的用户
+```
+
+那现在就来练手其他算法了，后面时间复杂度相同的算法就不运算三次了
+
+## 方法2：选择排序
+
+```python
+class Solution:
+    def minNumber(self, nums: List[int]) -> str:
+        if not nums: return ""
+        len_max = len(nums)
+        for before in range(len_max):
+            for after in range(before+1, len_max):
+                if self.compare(str(nums[before]), str(nums[after])):
+                    nums[before], nums[after] = nums[after], nums[before]
+        return "".join([str(each) for each in nums])
+    
+    def compare(self, str_1, str_2):        
+        return True if int(str_1 + str_2) > int(str_2 + str_1) else False
+```
+
+运行结果
+
+```
+执行用时 :132 ms, 在所有 Python3 提交中击败了7.03% 的用户
+内存消耗 :13.6 MB, 在所有 Python3 提交中击败了100.00%的用户
+```
+
+## 方法3：插入排序
+
+```python
+class Solution:
+    def minNumber(self, nums: List[int]) -> str:
+        if not nums: return ""
+        len_max = len(nums)
+        for index in range(1, len_max):
+            tem_value = nums[index]
+            before_index = index - 1
+            while before_index >= 0 and self.compare(str(nums[before_index]), str(tem_value)):
+                nums[before_index+1], nums[before_index] = nums[before_index], tem_value
+                before_index -= 1
+        return "".join([str(each) for each in nums])
+    
+    def compare(self, str_1, str_2):        
+        return True if int(str_1 + str_2) > int(str_2 + str_1) else False
+```
+
+运行结果
+
+```
+执行用时 :108 ms, 在所有 Python3 提交中击败了11.66% 的用户
+内存消耗 :13.6 MB, 在所有 Python3 提交中击败了100.00%的用户
+```
+
+## 方法4：快速排序
+
+接下来是时间复杂度是`O(nlogn)`的快排和归并
+
+```python
+class Solution:
+    def minNumber(self, nums: List[int]) -> str:
+        if not nums: return ""
+        nums = self.quick_sort(nums)
+        return "".join([str(each) for each in nums])
+    
+    def quick_sort(self, nums):
+        if not nums: return []
+        if len(nums) == 1: return nums
+        left, right = [], []
+        middle = len(nums) // 2
+        for index in range(len(nums)):
+            if index == middle: continue
+            if self.compare(str(nums[index]), str(nums[middle])):
+                right.append(nums[index])
+            else:
+                left.append(nums[index])
+        return self.quick_sort(left) + [nums[middle]] + self.quick_sort(right)
+    
+    def compare(self, str_1, str_2):        
+        return True if int(str_1 + str_2) > int(str_2 + str_1) else False
+```
+
+运行结果
+
+```
+执行用时 :56 ms, 在所有 Python3 提交中击败了59.12% 的用户
+内存消耗 :13.8 MB, 在所有 Python3 提交中击败了100.00%的用户
+```
+
+## 方法5：归并排序
+
+那接下来就是归并排序
+
+```python
+class Solution:
+    def minNumber(self, nums: List[int]) -> str:
+        if not nums: return ""
+        nums = self.merge_sort(nums)
+        return "".join([str(each) for each in nums])
+    
+    def merge(self, nums_1, nums_2):
+        result = []
+        while nums_1 and nums_2:
+            if self.compare(str(nums_1[0]), str(nums_2[0])):
+                result.append(nums_2[0])
+                nums_2.pop(0)
+            else:
+                result.append(nums_1[0])
+                nums_1.pop(0)
+        result += nums_1 or nums_2
+        return result
+    
+    def merge_sort(self, nums):
+        if not nums: return
+        if len(nums) == 1: return nums
+        middle = len(nums) // 2
+        left = self.merge_sort(nums[:middle])
+        right = self.merge_sort(nums[middle:])
+        return self.merge(left, right)
+    
+    def compare(self, str_1, str_2):        
+        return True if int(str_1 + str_2) > int(str_2 + str_1) else False
+```
+
+运行结果
+
+```
+执行用时 :64 ms, 在所有 Python3 提交中击败了43.97% 的用户
+内存消耗 :13.8 MB, 在所有 Python3 提交中击败了100.00%的用户
+```
+
+欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
+
+  
