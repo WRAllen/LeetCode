@@ -1,0 +1,85 @@
+# 题目[面试题06. 从尾到头打印链表](https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/)
+
+输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。
+
+示例 1：
+
+```
+输入：head = [1,3,2]
+输出：[2,3,1]
+```
+
+限制：
+
+```
+0 <= 链表长度 <= 10000
+```
+
+
+
+*****
+
+# Python解题思路
+
+## 方法1：递归算法
+
+由于递归的性质非常符合这题
+
+```python
+class Solution:
+    def reversePrint(self, head: ListNode) -> List[int]:
+        result = []
+        self.trackback(head, result)
+        return result
+
+    def trackback(self, head, result):
+        if not head: return
+        self.trackback(head.next, result)
+        result.append(head.val)
+```
+
+运行结果
+
+```
+执行用时 :44 ms, 在所有 Python3 提交中击败了82.46% 的用户
+内存消耗 :22.9 MB, 在所有 Python3 提交中击败了100.00%的用户
+
+执行用时 :76 ms, 在所有 Python3 提交中击败了25.47% 的用户
+内存消耗 :22.8 MB, 在所有 Python3 提交中击败了100.00%的用户
+
+执行用时 :64 ms, 在所有 Python3 提交中击败了38.69% 的用户
+内存消耗 :22.8 MB, 在所有 Python3 提交中击败了100.00%的用户
+```
+
+## 方法2：迭代算法
+
+其实一个简单的循环就可以解决，不能用切片的话，通过while再循环一次pop出结果就行
+
+```python
+class Solution:
+    def reversePrint(self, head: ListNode) -> List[int]:
+        result = []
+        while head:
+            result.append(head.val)
+            head = head.next
+        return result[::-1]
+```
+
+运行结果
+
+```
+执行用时 :48 ms, 在所有 Python3 提交中击败了68.10% 的用户
+内存消耗 :15.3 MB, 在所有 Python3 提交中击败了100.00%的用户
+
+执行用时 :56 ms, 在所有 Python3 提交中击败了49.11% 的用户
+内存消耗 :15.3 MB, 在所有 Python3 提交中击败了100.00%的用户
+
+执行用时 :76 ms, 在所有 Python3 提交中击败了25.47% 的用户
+内存消耗 :15.3 MB, 在所有 Python3 提交中击败了100.00%的用户
+```
+
+
+
+欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
+
+  
