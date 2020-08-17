@@ -53,7 +53,7 @@ class Solution:
 
 # Go解题思路
 
-## 方法2:slice
+## 方法1:slice
 
 同python的切片，go的切片大致上和python一样（例如不能取-1）
 
