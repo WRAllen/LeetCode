@@ -66,6 +66,51 @@ class Solution:
 内存消耗 :17.8 MB, 在所有 Python3 提交中击败了100.00%的用户
 ```
 
+# Go解题思路
+
+## 方法1:根据规律
+
+```go
+func findNumberIn2DArray(matrix [][]int, target int) bool {
+    if len(matrix) == 0{
+        return false
+    }
+	maxLeft, maxRight := len(matrix), len(matrix[0])
+	left, right := 0, maxRight - 1
+	for true {
+		if left == maxLeft || left < 0 || right < 0 || right == maxRight {
+			return false
+		}
+		if matrix[left][right] == target {
+			return true
+		}
+		if matrix[left][right] < target {
+			left += 1
+		} else {
+			right -= 1
+		}
+	}
+	return false
+}
+```
+
+运行结果
+
+```
+执行用时：28 ms, 在所有 Go 提交中击败了81.47% 的用户
+内存消耗：6.6 MB, 在所有 Go 提交中击败了39.69% 的用户
+
+执行用时：20 ms, 在所有 Go 提交中击败了99.48% 的用户
+内存消耗：6.6 MB, 在所有 Go 提交中击败了39.69% 的用户
+
+执行用时：28 ms, 在所有 Go 提交中击败了81.47% 的用户
+内存消耗：6.6 MB, 在所有 Go 提交中击败了70.89% 的用户
+```
+
 欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
+
+
+
+
 
   
