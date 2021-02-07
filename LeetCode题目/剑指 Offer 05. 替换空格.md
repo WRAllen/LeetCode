@@ -71,6 +71,52 @@ class Solution:
 内存消耗 :13.6 MB, 在所有 Python3 提交中击败了100.00%的用户
 ```
 
+# Go解题思路
+
+## 方法1:strings.Replace
+
+```go
+func replaceSpace(s string) string {
+    return strings.Replace(s, " ", "%20", -1) 
+}
+```
+
+运行结果
+
+```
+执行用时：0 ms, 在所有 Go 提交中击败了100.00% 的用户
+内存消耗：1.9 MB, 在所有 Go 提交中击败了70.03% 的用户
+```
+
+## 方法2:字符串拼接
+
+其实完全没有必要用列表，用字符串就可以解决了
+
+```go
+func replaceSpace(s string) string {
+    datas := ""
+    for _, val := range s{
+        if string(val) == " "{
+            datas += "%20"
+        }else{
+            datas += string(val)
+        }
+    }
+    return datas
+}
+```
+
+运行结果
+
+```
+执行用时：0 ms, 在所有 Go 提交中击败了100.00% 的用户
+内存消耗：3.4 MB, 在所有 Go 提交中击败了8.15% 的用户
+```
+
 欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
+
+
+
+
 
   
