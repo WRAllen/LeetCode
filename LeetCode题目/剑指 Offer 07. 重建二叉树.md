@@ -34,6 +34,8 @@
 
 根据前序遍历和中序遍历的特点进行解题
 
+思路也比较清晰，我不管具体怎么搞，只要知道preorder里面哪些是左子树，哪些是右子树即可（inorder同理），这样我把属于左右子树的数据进行递归即可
+
 ```python
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
@@ -92,6 +94,61 @@ class Solution:
 执行用时 :56 ms, 在所有 Python3 提交中击败了90.24% 的用户
 内存消耗 :17.9 MB, 在所有 Python3 提交中击败了100.00%的用户
 ```
+
+# Go解题思路
+
+## 方法1:递归重组
+
+思路同python，不过golang里面没有python列表的index，需要自己写
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func indexOfArray(datas []int, target int)int{
+    for index, val := range datas{
+        if val == target{
+            return index
+        }
+    }
+    return -1
+}
+
+func buildTree(preorder []int, inorder []int) *TreeNode {
+    if len(preorder) == 0 || len(inorder) == 0{
+        return nil
+    }
+    root := TreeNode{Val: preorder[0]}
+    index := indexOfArray(inorder, preorder[0])
+    l_inorder := inorder[:index]
+    r_inorder := inorder[1+index:]
+    l_preorder := preorder[1:]
+    r_preorder := preorder[1+len(l_inorder):]
+    root.Left = buildTree(l_preorder, l_inorder)
+    root.Right = buildTree(r_preorder, r_inorder)
+    return &root
+}
+```
+
+运行结果
+
+```
+执行用时：8 ms, 在所有 Go 提交中击败了63.68% 的用户
+内存消耗：4.3 MB, 在所有 Go 提交中击败了22.44% 的用户
+
+执行用时：8 ms, 在所有 Go 提交中击败了63.68% 的用户
+内存消耗：4.3 MB, 在所有 Go 提交中击败了21.79% 的用户
+
+执行用时：4 ms, 在所有 Go 提交中击败了95.98% 的用户
+内存消耗：4.3 MB, 在所有 Go 提交中击败了21.79% 的用户
+```
+
+
 
 欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
 
