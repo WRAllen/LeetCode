@@ -79,6 +79,76 @@ class Solution:
 内存消耗 :22.8 MB, 在所有 Python3 提交中击败了100.00%的用户
 ```
 
+# Go解题思路
+
+## 方法1:哈希表
+
+方法同python的方法1
+
+```go
+func findRepeatNumber(nums []int) int {
+    datas := map[int]int{}
+    for _, num := range nums{
+        if _, exist := datas[num]; exist{
+            return num
+        }else{
+            datas[num] = 0
+        }
+    }
+    return 0
+}
+```
+
+运行结果
+
+```
+执行用时：56 ms, 在所有 Go 提交中击败了9.57% 的用户
+内存消耗：9.8 MB, 在所有 Go 提交中击败了7.76% 的用户
+
+执行用时：48 ms, 在所有 Go 提交中击败了40.13% 的用户
+内存消耗：9.8 MB, 在所有 Go 提交中击败了15.04% 的用户
+
+执行用时：48 ms, 在所有 Go 提交中击败了40.13% 的用户
+内存消耗：9.8 MB, 在所有 Go 提交中击败了7.76% 的用户
+```
+
+## 方法2:数组
+
+go用数组的形式来试试，估计时间会久
+
+```go
+func inArray(nums []int, num int) bool{
+    for _, eachNum := range nums{
+        if eachNum == num{
+            return true
+        }
+    }
+    return false
+}
+
+func findRepeatNumber(nums []int) int {
+    datas := [] int {}
+    for _, num := range nums{
+        if inArray(datas, num){
+            return num
+        }else{
+            datas = append(datas, num)
+        }
+    }
+    return 0
+}
+```
+
+运行结果
+
+```
+执行用时：512 ms, 在所有 Go 提交中击败了6.02% 的用户
+内存消耗：8.4 MB, 在所有 Go 提交中击败了92.78% 的用户
+```
+
+果然和python里面的list一样，在便利的时候非常耗时。go里面没有set这种数据结构，但是哈希表（集合）也完全可以当作set来使用
+
 欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
 
   
+
