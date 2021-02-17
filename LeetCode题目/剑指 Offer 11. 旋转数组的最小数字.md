@@ -65,6 +65,10 @@ class Solution:
 
 看了一位大神的[解题思路](https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/solution/mian-shi-ti-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-3/)，发现还可以用二分法来处理
 
+刚开始我的思路是往右边缩小范围，可是问题就出现了，如果是递增的数组的话，最后左指针会指到右边，这是和题目相违背的。
+
+所以我们一套往左进行缩小
+
 ```python
 class Solution:
     def minArray(self, numbers: List[int]) -> int:
@@ -104,6 +108,74 @@ class Solution:
 >空间复杂度：*O(1)*
 
 可以发现：有顺序的列表一般都可以用二分法来找值
+
+# Go解题思路
+
+## 方法1:循环数组
+
+思路同python的方法1
+
+```go
+func minArray(numbers []int) int {
+    for i:=0; i<len(numbers)-1; i++{
+        if numbers[i] > numbers[i+1]{
+            return numbers[i+1]
+        }
+    }
+    return numbers[0]
+}
+```
+
+运行结果
+
+```
+执行用时：4 ms, 在所有 Go 提交中击败了91.12% 的用户
+内存消耗：3.1 MB, 在所有 Go 提交中击败了59.08% 的用户
+
+执行用时：4 ms, 在所有 Go 提交中击败了91.12% 的用户
+内存消耗：3.1 MB, 在所有 Go 提交中击败了59.08% 的用户
+
+执行用时：4 ms, 在所有 Go 提交中击败了91.12% 的用户
+内存消耗：3.1 MB, 在所有 Go 提交中击败了59.08% 的用户
+```
+
+
+
+## 方法2:二分法
+
+同python的方法2
+
+```go
+func minArray(numbers []int) int {
+	left, right := 0, len(numbers)-1
+	for left < right{
+		middle := (left+right)/2
+		if numbers[middle] < numbers[right]{
+			right = middle
+		}else if numbers[middle] > numbers[right]{
+			left = middle + 1
+		}else {
+			right -= 1
+		}
+	}
+	return numbers[left]
+}
+```
+
+运行结果
+
+```
+执行用时：4 ms, 在所有 Go 提交中击败了91.12% 的用户
+内存消耗：3.1 MB, 在所有 Go 提交中击败了100.00% 的用户
+
+执行用时：4 ms, 在所有 Go 提交中击败了91.12% 的用户
+内存消耗：3.1 MB, 在所有 Go 提交中击败了59.08% 的用户
+
+执行用时：4 ms, 在所有 Go 提交中击败了91.12% 的用户
+内存消耗：3.1 MB, 在所有 Go 提交中击败了59.08% 的用户
+```
+
+
 
 欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
 
