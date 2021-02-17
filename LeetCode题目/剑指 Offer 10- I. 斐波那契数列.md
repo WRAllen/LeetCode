@@ -182,6 +182,32 @@ class Solution:
 
 可以发现，最终还是变成方法2的代码了，这里就不运算了
 
+# Go解题思路
+
+## 方法1:动态规划
+
+直接用最优版的写出golang的语法
+
+```go
+func fib(n int) int {
+    pre, now := 0, 1
+    for i:=0; i<n; i++{
+        // 这里注意，整型可能会越界
+        pre, now = now, (pre+now)%1000000007
+    }
+    return pre
+}
+```
+
+运行结果
+
+```
+执行用时：0 ms, 在所有 Go 提交中击败了100.00% 的用户
+内存消耗：1.9 MB, 在所有 Go 提交中击败了75.87% 的用户
+```
+
+由于我是先做了10-2青蛙跳台那一题过来的，所以注意到了可能的越界问题，具体的看我的解题思路[面试题10- II. 青蛙跳台阶问题](https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/solution/mian-shi-ti-10-ii-qing-wa-tiao-tai-jie-wen-ti-by-2/)
+
 欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
 
   
