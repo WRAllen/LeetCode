@@ -58,7 +58,7 @@ class Solution:
         # 说明root的左边和右边上有p或者q
         if left_node and right_node:
             return root
-        return left_node if left_node else right_node
+        return left_node or right_node
 ```
 
 运行结果
