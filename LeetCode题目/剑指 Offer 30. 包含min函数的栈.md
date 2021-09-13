@@ -66,6 +66,70 @@ minStack.min();   --> 返回 -2.
 内存消耗 :17 MB, 在所有 Python3 提交中击败了100.00%的用户
 ```
 
+# Go解题思路
+
+## 方法2：动态规划
+
+思路同python方法，这里不赘诉
+
+```go
+type MinStack struct {
+    stack []int
+    stack_copy []int
+}
+
+func min(num_1, num_2 int) int {
+    if num_1 <= num_2{
+        return num_1
+    }
+    return num_2
+}
+
+/** initialize your data structure here. */
+func Constructor() MinStack {
+    return MinStack{stack: []int{}, stack_copy: []int{}}
+}
+
+func (this *MinStack) Push(x int)  {
+    this.stack = append(this.stack, x)
+    if len(this.stack_copy) == 0{
+        this.stack_copy = append(this.stack_copy, x)
+    }else{
+        min_num := min(this.stack_copy[len(this.stack_copy)-1], x)
+        this.stack_copy = append(this.stack_copy, min_num)
+    }
+}
+
+func (this *MinStack) Pop()  {
+    this.stack = this.stack[:len(this.stack)-1]
+    this.stack_copy = this.stack_copy[:len(this.stack_copy)-1]
+}
+
+func (this *MinStack) Top() int {
+    return this.stack[len(this.stack)-1]
+}
+
+func (this *MinStack) Min() int {
+    return this.stack_copy[len(this.stack_copy)-1]
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * obj := Constructor();
+ * obj.Push(x);
+ * obj.Pop();
+ * param_3 := obj.Top();
+ * param_4 := obj.Min();
+ */
+```
+
+运行结果
+
+```
+执行用时：20 ms, 在所有 Go 提交中击败了28.19% 的用户
+内存消耗：8 MB, 在所有 Go 提交中击败了59.07% 的用户
+```
+
 欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
 
   
