@@ -95,7 +95,7 @@ class Solution:
 
 由于题目中的对象是不可变的，所以可以作为key。这是我之前万万没想到用对象来做key啊，妙啊！！！
 
-## 方法1：DFS
+## 方法1：递归算法
 
 在之前的代码基础上添加修改，代码如下
 
@@ -104,18 +104,19 @@ class Solution:
     def copyRandomList(self, head: 'Node') -> 'Node':
         result = Node(-1)
         new_node_dict = {}
-        use_head = head
         def build(head):
-            if not head: return
+            if not head: 
+                return
             # 判断当前的结点是否存在，存在直接返回
             if head in new_node_dict.keys():
                 return new_node_dict[head]
             node = Node(head.val)
+            # 要在递归前先创建对应的节点
             new_node_dict[head] = node
             node.next = build(head.next)
             node.random = build(head.random)
             return node
-        result.next = build(use_head)
+        result.next = build(head)
         return result.next
 ```
 
@@ -155,6 +156,52 @@ class Solution:
 
 执行用时 :60 ms, 在所有 Python3 提交中击败了29.56% 的用户
 内存消耗 :18 MB, 在所有 Python3 提交中击败了100.00%的用户
+```
+
+# Go解题思路
+
+## 方法1：递归算法
+
+思路同python的方法1
+
+```go
+/**
+ * Definition for a Node.
+ * type Node struct {
+ *     Val int
+ *     Next *Node
+ *     Random *Node
+ * }
+ */
+var nodeDict map[*Node]*Node
+
+func build(head *Node) *Node {
+    if head == nil{
+        return head
+    }
+    if node, exist := nodeDict[head]; exist{
+        return node
+    }
+    newNode := &Node{Val: head.Val}
+    nodeDict[head] = newNode
+    newNode.Next = build(head.Next)
+    newNode.Random = build(head.Random)
+    return newNode
+}
+
+func copyRandomList(head *Node) *Node {
+    nodeDict = map[*Node]*Node{}
+    result := &Node{Val: -1}
+    result.Next = build(head)
+    return result.Next
+}
+```
+
+运行结果
+
+```
+执行用时：0 ms, 在所有 Go 提交中击败了100.00% 的用户
+内存消耗：3.7 MB, 在所有 Go 提交中击败了9.66% 的用户
 ```
 
 欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)

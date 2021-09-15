@@ -65,9 +65,10 @@ class Solution:
 ```python
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        if not head or not head.next: return head
+        if not head or not head.next: 
+            return head
         new_head = self.reverseList(head.next)
-        # 下面这两句我之前是理解了的，结果现在却又不能马上理解了
+        # 下面这两句我很重要
         head.next.next = head
         head.next = None
         return new_head
@@ -89,12 +90,15 @@ class Solution:
 演示一下上面的两句
 
 ```
-1-2-3-4
-old = 1-2-3-4    head = 4-3-2
-old.next.next = old ===>  也就是1-2之后的那位接上old也就是1  1-2->1-2-3-4
-上面这样看起来平淡无趣甚至不知所措其实联系上 head = 4-3-2 你就发现head = 4-3-2->1-2-3-4
-old.next = None     ===>  1-None 这样把1后面的结点给他置为None
-为了是head = 4-3-2->1-2-3-4 变成 head = 4-3-2->1
+例子：1->2->3->4
+head = 1->2->3->4
+用递归的思路当head为1的时候进行new_head已经整理好了如→，new_head:None<-2<-3<-4
+head还是 1 -> 2(head.next还是指向了2)
+所以来了head.next.next 就是2的next
+head.next.next = head 等价于 2 -> 1 所以new_head现在是 2<-1<-2<-3<-4
+所以要head.next = None 也就是1的next置为空
+把 2<-1<-2<-3<-4 的2<-1 变成 None <- 1
+现在整个new_head：None<-1<-2<-3<-4就是要的结果
 ```
 
 果然还是秀啊，不过凭我的脑子在极端压力下（例如面试时）是根本想不出来的
@@ -106,7 +110,8 @@ old.next = None     ===>  1-None 这样把1后面的结点给他置为None
 ```python
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        if not head: return None
+        if not head: 
+            return None
         tem = None
         while head:
             second = head.next
@@ -142,6 +147,33 @@ seco: 3-4
 tem : 2-1-None
 这样就发现了规律，把head的头结点拿来拼接到tem的头部上
 ```
+
+# Go解题思路
+
+## 方法1：递归算法
+
+思路同python方法2
+
+```go
+func reverseList(head *ListNode) *ListNode {
+    if head == nil || head.Next == nil{
+        return head
+    }
+    new_head := reverseList(head.Next)
+    head.Next.Next = head
+    head.Next = nil
+    return new_head
+}
+```
+
+运行结果
+
+```
+执行用时：0 ms, 在所有 Go 提交中击败了100.00% 的用户
+内存消耗：3 MB, 在所有 Go 提交中击败了21.95% 的用户
+```
+
+这个0ms太骚了（滑稽）
 
 欢迎来github上看更多题目的解答[力扣解题思路](https://github.com/WRAllen/LeetCode)
 

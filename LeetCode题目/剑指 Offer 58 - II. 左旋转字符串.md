@@ -25,8 +25,34 @@
 *****
 
 # Python解题思路
+## 方法1：暴力破解-超时
 
-## 方法1:切片组合
+思路就是依次把第一个字符移动到最后
+
+```python
+class Solution:
+    def reverseLeftWords(self, s: str, n: int) -> str:
+        s_list = list(s)
+        index = 0
+        while index < n:
+            tmp_index = 0
+            need_change_index = tmp_index + 1
+            while need_change_index < len(s_list):
+                s_list[need_change_index], s_list[tmp_index] = s_list[tmp_index],  s_list[need_change_index]
+                need_change_index += 1
+                tmp_index += 1
+            index += 1
+        return "".join(s_list)
+```
+
+运行结果
+
+```
+25 / 34 个通过测试用例
+状态：超出时间限制
+```
+
+## 方法2：切片组合
 
 这题题目看起来和读起来好像就是简单的拆封列表然后再拼接在一起？？？
 
@@ -49,11 +75,27 @@ class Solution:
 内存消耗：13.7 MB, 在所有 Python3 提交中击败了50.45% 的用户
 ```
 
+## 方法3：切片
+
+```python
+class Solution:
+    def reverseLeftWords(self, s: str, n: int) -> str:
+        s = s + s
+        return s[n: len(s)//2+n]
+```
+
+运行结果
+
+```
+执行用时：28 ms, 在所有 Python3 提交中击败了91.70% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了50.43% 的用户
+```
+
 
 
 # Go解题思路
 
-## 方法1:slice
+## 方法1：slice
 
 同python的切片，go的切片大致上和python一样（例如不能取-1）
 
