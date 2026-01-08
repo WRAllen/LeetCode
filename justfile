@@ -8,3 +8,10 @@ go:
 
 py:
     python testCode/main.py
+
+# 用法: just acp "commit message"
+# 用于快速提交
+acp msg:
+    git add .
+    git commit -m "{{msg}}"
+    git push
