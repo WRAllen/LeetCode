@@ -110,6 +110,8 @@ PS:树和链表这种结构天生就适用于递归
 
 #### [221. 最大正方形](https://leetcode-cn.com/problems/maximal-square/)
 
+### [300. 最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/)
+
 *****
 
 ## 分治算法
